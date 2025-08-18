@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background Colors */
+    --color-background: #FAFAFA; /* warm off-white */
+    --color-foreground: #1F2937; /* dark gray */
+    --color-card: #FFFFFF; /* pure white */
+    --color-card-foreground: #1F2937; /* dark gray */
+    --color-popover: #FFFFFF; /* pure white */
+    --color-popover-foreground: #1F2937; /* dark gray */
+    --color-muted: #F3F4F6; /* light gray */
+    --color-muted-foreground: #6B7280; /* medium gray */
+    
+    /* Primary Colors */
+    --color-primary: #D97706; /* energetic orange */
+    --color-primary-foreground: #FFFFFF; /* white */
+    --color-secondary: #F59E0B; /* lighter golden accent */
+    --color-secondary-foreground: #1F2937; /* dark gray */
+    
+    /* Accent Colors */
+    --color-accent: #0EA5E9; /* sky blue */
+    --color-accent-foreground: #FFFFFF; /* white */
+    
+    /* State Colors */
+    --color-success: #10B981; /* emerald green */
+    --color-success-foreground: #FFFFFF; /* white */
+    --color-warning: #F59E0B; /* secondary orange */
+    --color-warning-foreground: #1F2937; /* dark gray */
+    --color-error: #EF4444; /* clear red */
+    --color-error-foreground: #FFFFFF; /* white */
+    --color-destructive: #EF4444; /* clear red */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* UI Elements */
+    --color-border: #E5E7EB; /* light gray */
+    --color-input: #FFFFFF; /* white */
+    --color-ring: #D97706; /* energetic orange */
+    
+    /* Border Radius */
+    --radius: 8px;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(217, 151, 6, 0.05);
+    --shadow-md: 0 1px 3px rgba(217, 151, 6, 0.1);
+    --shadow-lg: 0 4px 6px rgba(217, 151, 6, 0.1);
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .shadow-warm-sm {
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .shadow-warm {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .shadow-warm-lg {
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .animate-scale-press {
+    transition: transform 150ms ease-out;
+  }
+  
+  .animate-scale-press:active {
+    transform: scale(0.98);
+  }
+  
+  .transition-smooth {
+    transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .transition-smooth-300 {
+    transition: all 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-scale-press,
+  .transition-smooth,
+  .transition-smooth-300 {
+    transition: none;
+  }
+}
+
+/* Mobile-first responsive utilities */
+@layer utilities {
+  /* Mobile-specific spacing */
+  .mobile-p-2 { padding: 0.5rem; }
+  .mobile-p-4 { padding: 1rem; }
+  .mobile-p-6 { padding: 1.5rem; }
+  .mobile-p-8 { padding: 2rem; }
+  
+  .mobile-m-2 { margin: 0.5rem; }
+  .mobile-m-4 { margin: 1rem; }
+  .mobile-m-6 { margin: 1.5rem; }
+  .mobile-m-8 { margin: 2rem; }
+  
+  /* Mobile-specific text sizes */
+  .mobile-text-xs { font-size: 0.625rem; line-height: 0.875rem; }
+  .mobile-text-sm { font-size: 0.75rem; line-height: 1rem; }
+  .mobile-text-base { font-size: 0.875rem; line-height: 1.25rem; }
+  .mobile-text-lg { font-size: 1rem; line-height: 1.5rem; }
+  
+  /* Touch-friendly button sizes */
+  .touch-target { min-height: 44px; min-width: 44px; }
+  .touch-target-lg { min-height: 48px; min-width: 48px; }
+  
+  /* Mobile-optimized shadows */
+  .shadow-mobile { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+  .shadow-mobile-lg { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+  
+  /* Safe area support for mobile devices */
+  .safe-area-top { padding-top: env(safe-area-inset-top); }
+  .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+  .safe-area-left { padding-left: env(safe-area-inset-left); }
+  .safe-area-right { padding-right: env(safe-area-inset-right); }
+}
+
+/* Responsive breakpoint utilities */
+@layer components {
+  /* Mobile-first container */
+  .container-mobile {
+    @apply w-full px-4 mx-auto;
+    max-width: 100%;
+  }
+  
+  /* Tablet container */
+  .container-tablet {
+    @apply w-full px-6 mx-auto;
+    max-width: 768px;
+  }
+  
+  /* Desktop container */
+  .container-desktop {
+    @apply w-full px-8 mx-auto;
+    max-width: 1200px;
+  }
+  
+  /* Mobile-optimized grid */
+  .grid-mobile {
+    @apply grid gap-4;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  /* Mobile-optimized flex */
+  .flex-mobile {
+    @apply flex flex-col gap-4;
+  }
+  
+  .flex-mobile-row {
+    @apply flex flex-row gap-4 flex-wrap;
+  }
+  
+  /* Mobile-optimized cards */
+  .card-mobile {
+    @apply bg-white rounded-lg shadow-mobile p-4;
+  }
+  
+  .card-mobile-lg {
+    @apply bg-white rounded-lg shadow-mobile-lg p-6;
+  }
+  
+  /* Mobile-optimized buttons */
+  .btn-mobile {
+    @apply touch-target px-4 py-2 text-mobile-base font-medium rounded-lg;
+  }
+  
+  .btn-mobile-lg {
+    @apply touch-target-lg px-6 py-3 text-mobile-lg font-medium rounded-lg;
+  }
+  
+  /* Mobile-optimized inputs */
+  .input-mobile {
+    @apply w-full px-3 py-2 text-mobile-base border border-gray-300 rounded-lg;
+  }
+  
+  .input-mobile-lg {
+    @apply w-full px-4 py-3 text-mobile-lg border border-gray-300 rounded-lg;
+  }
+}
+
+/* Mobile-specific media queries */
+@media (max-width: 767px) {
+  /* Optimize typography for mobile */
+  h1 { font-size: 1.5rem; line-height: 2rem; }
+  h2 { font-size: 1.25rem; line-height: 1.75rem; }
+  h3 { font-size: 1.125rem; line-height: 1.5rem; }
+  
+  /* Optimize spacing for mobile */
+  .mobile-optimized { padding: 1rem; }
+  .mobile-optimized-lg { padding: 1.5rem; }
+  
+  /* Optimize grid for mobile */
+  .mobile-grid { grid-template-columns: 1fr; }
+  
+  /* Optimize flex for mobile */
+  .mobile-flex { flex-direction: column; }
+  
+  /* Hide elements on mobile if needed */
+  .mobile-hidden { display: none; }
+  
+  /* Show elements only on mobile */
+  .mobile-only { display: block; }
+}
+
+/* Tablet-specific optimizations */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tablet-optimized { padding: 1.5rem; }
+  .tablet-grid { grid-template-columns: repeat(2, 1fr); }
+  .tablet-hidden { display: none; }
+  .tablet-only { display: block; }
+}
+
+/* Desktop-specific optimizations */
+@media (min-width: 1024px) {
+  .desktop-optimized { padding: 2rem; }
+  .desktop-grid { grid-template-columns: repeat(3, 1fr); }
+  .desktop-hidden { display: none; }
+  .desktop-only { display: block; }
+}
