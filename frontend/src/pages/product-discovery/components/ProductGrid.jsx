@@ -103,12 +103,12 @@ const ProductGrid = ({
   );
 
   return (
-    <div 
-      className="flex-1 overflow-y-auto"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
+    <div
+  className="flex-1"
+  onTouchStart={handleTouchStart}
+  onTouchMove={handleTouchMove}
+  onTouchEnd={handleTouchEnd}
+>
       {/* Pull to Refresh Indicator */}
       {pullDistance > 0 && (
         <div 
@@ -133,11 +133,11 @@ const ProductGrid = ({
         </div>
       )}
       {/* Product Grid */}
-      <div className="p-4">
+      <div className="px-3 py-4 sm:px-4">
         {products?.length === 0 && !isLoading ? (
           <EmptyState />
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4">
             {products?.map((product) => (
               <ProductCard
                 key={product?.id}

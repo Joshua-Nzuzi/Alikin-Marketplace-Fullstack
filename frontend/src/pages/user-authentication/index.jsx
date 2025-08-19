@@ -66,7 +66,7 @@ const UserAuthentication = () => {
           <title>Configuration Mobile Money - Alikin Marketplace</title>
           <meta name="description" content="Configurez votre compte Mobile Money pour des paiements sécurisés sur Alikin" />
         </Helmet>
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen flex flex-col bg-background pt-16 lg:pt-20">
           <Header user={user} onNavigate={handleNavigation} />
           
           <main className="container mx-auto px-4 py-8">

@@ -254,7 +254,7 @@ const VendorDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen flex flex-col bg-background pt-16 lg:pt-20">
       {/* Header */}
       <Header 
         user={currentUser} 

@@ -8,9 +8,40 @@ import SearchHeader from './components/SearchHeader';
 import SortDropdown from './components/SortDropdown';
 import ProductGrid from './components/ProductGrid';
 
+
+
 const ProductDiscovery = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  
+const [query, setQuery] = useState(searchParams.get('q') || '');
+const [category, setCategory] = useState(searchParams.get('category') || '');
+const [sort, setSort] = useState(searchParams.get('sort') || 'relevance');
+const [minPrice, setMinPrice] = useState(searchParams.get('min') || '');
+const [maxPrice, setMaxPrice] = useState(searchParams.get('max') || '');
+
+function updateParams(next) {
+  const current = Object.fromEntries([...searchParams]);
+  const merged = { ...current, ...next };
+  // Nettoie les clés vides
+  Object.keys(merged).forEach(k => { if (merged[k] === '' || merged[k] == null) delete merged[k]; });
+  setSearchParams(merged, { replace: true });
+}
+
+const onQueryChange = (val) => { setQuery(val); updateParams({ q: val }); };
+const onCategoryChange = (val) => { setCategory(val); updateParams({ category: val }); };
+const onSortChange = (val) => { setSort(val); updateParams({ sort: val }); };
+const onMinChange = (val) => { setMinPrice(val); updateParams({ min: val }); };
+const onMaxChange = (val) => { setMaxPrice(val); updateParams({ max: val }); };
+
+useEffect(() => {
+  setQuery(searchParams.get('q') || '');
+  setCategory(searchParams.get('category') || '');
+  setSort(searchParams.get('sort') || 'relevance');
+  setMinPrice(searchParams.get('min') || '');
+  setMaxPrice(searchParams.get('max') || '');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [searchParams.toString()]);
   
   // State management
   const [products, setProducts] = useState([]);
@@ -325,17 +356,18 @@ const ProductDiscovery = () => {
     setFilteredProducts(filtered);
   }, [products, filters, searchQuery, sortBy]);
 
-  // Handle search
-  const handleSearch = useCallback((query) => {
-    setSearchQuery(query);
-    setSearchParams(query ? { q: query } : {});
-  }, [setSearchParams]);
-
-  // Handle filter changes
-  const handleFiltersChange = useCallback((newFilters) => {
-    setFilters(newFilters);
-  }, []);
-
+  // handleSearch -> utilise onQueryChange pour aussi maj les query params
+const handleSearch = useCallback((q) => {
+  onQueryChange(q);
+}, [/* rien: onQueryChange est local */]);
+  // handleFiltersChange -> pousse category/min/max dans URL si présents
+const handleFiltersChange = useCallback((newFilters) => {
+  setFilters(newFilters);
+  const cat = newFilters?.categories?.[0] || '';
+  const min = newFilters?.priceRange?.min ?? '';
+  const max = newFilters?.priceRange?.max ?? '';
+  updateParams({ category: cat, min, max });
+}, [updateParams]);
   // Handle filter removal
   const handleRemoveFilter = useCallback((filterKey) => {
     const newFilters = { ...filters };
@@ -348,10 +380,11 @@ const ProductDiscovery = () => {
     setFilters({});
   }, []);
 
-  // Handle sort change
-  const handleSortChange = useCallback((newSort) => {
-    setSortBy(newSort);
-  }, []);
+  // handleSortChange -> pousse dans URL
+const handleSortChange = useCallback((newSort) => {
+  setSortBy(newSort);
+  updateParams({ sort: newSort });
+}, [updateParams]);
 
   // Handle load more
   const handleLoadMore = useCallback(() => {
@@ -417,14 +450,15 @@ const ProductDiscovery = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex pt-16 lg:pt-20 top-level">
+
       {/* Header */}
       <Header 
         user={user}
         cartCount={cartCount}
         onNavigate={handleNavigation}
       />
-      <div className="flex h-[calc(100vh-4rem)] lg:h-[calc(100vh-5rem)]">
+      <div className="flex">
         {/* Desktop Filter Sidebar */}
         <FilterSidebar
           filters={filters}
@@ -434,7 +468,7 @@ const ProductDiscovery = () => {
         />
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col">
           {/* Search Header */}
           <SearchHeader
             onSearch={handleSearch}

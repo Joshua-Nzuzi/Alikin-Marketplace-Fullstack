@@ -7,18 +7,18 @@ import Footer from './components/Footer';
 const LandingPage = () => {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-background pt-16 lg:pt-20">
       <Header />
       
       {/* Hero Section */}
       <main className="flex-1">
-        <section className="bg-gradient-to-br from-primary/5 via-background to-secondary/5 px-4 py-16 md:py-24">
+        <section className="bg-gradient-to-br from-primary/5 via-background to-secondary/5 px-4 py-12 md:py-20">
           <div className="container mx-auto max-w-6xl">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
               {/* Hero Content */}
               <div className="flex-1 text-center lg:text-left">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-                  <span className="text-primary">@LIKIN</span>
+                  <span className="text-primary">Bienvenu sur @LIKIN</span>
                   <br />
                   Le marché 100 % à la Kinoise
                 </h1>
@@ -27,11 +27,19 @@ const LandingPage = () => {
                 </p>
                 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <button onClick={() => navigate('/vendor-onboarding')} className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-medium text-lg transition-smooth animate-scale-press shadow-warm">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                  <button
+                    onClick={() => navigate('/vendor-onboarding')}
+                    className="w-full sm:w-auto h-12 bg-primary hover:bg-primary/90 text-primary-foreground px-6 sm:px-8 rounded-lg font-medium text-base sm:text-lg transition-smooth animate-scale-press shadow-warm"
+                    aria-label="Commencer à vendre sur Alikin"
+                  >
                     Commencer à vendre
                   </button>
-                  <button onClick={() => navigate('/product-discovery')} className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 rounded-lg font-medium text-lg transition-smooth animate-scale-press">
+                  <button
+                    onClick={() => navigate('/product-discovery')}
+                    className="w-full sm:w-auto h-12 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 sm:px-8 rounded-lg font-medium text-base sm:text-lg transition-smooth animate-scale-press"
+                    aria-label="Parcourir les produits Alikin"
+                  >
                     Parcourir les produits
                   </button>
                 </div>
@@ -56,11 +64,17 @@ const LandingPage = () => {
               {/* Hero Image */}
               <div className="flex-1 max-w-lg">
                 <div className="relative">
-                  <img
-                    src="/assets/images/Capture_d_ecran_2025-08-08_101036-1755246705179.png"
-                    alt="Alikin Marketplace - Commerçants locaux de Kinshasa"
-                    className="w-full h-auto rounded-2xl shadow-warm-lg"
-                  />
+                  <div className="aspect-[4/3] w-full max-h-72 overflow-hidden rounded-2xl shadow-warm-lg">
+  <img
+    src="/assets/images/alikin-man.jpg"
+    alt="Alikin Marketplace - Commerçants locaux de Kinshasa"
+    className="w-full h-full object-cover"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+  />
+</div>
+
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-2xl"></div>
                 </div>
               </div>

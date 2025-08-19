@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
+import { Link } from 'react-router-dom';
+
+
+// helper rapide
+const slugify = (name, id) => `${name}`.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') + (id ? `-${id}` : '');
 
 const ProductCard = ({ product, onQuickAdd = () => {}, onAddToCart = () => {} }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -79,12 +84,17 @@ const ProductCard = ({ product, onQuickAdd = () => {}, onAddToCart = () => {} })
         onClick={handleCardClick}
       >
         {/* Product Image */}
-        <div className="relative overflow-hidden rounded-t-lg aspect-square">
+        <div className="relative overflow-hidden rounded-t-lg aspect-square w-full">
+          <Link to={`/p/${slugify(product.name, product.id)}`}>
           <Image
-            src={product?.image}
-            alt={product?.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-smooth-300"
-          />
+  src={product?.image}
+  alt={product?.name}
+  className="w-full h-full object-cover group-hover:scale-105 transition-smooth-300"
+  loading="lazy"
+  decoding="async"
+/>
+
+          </Link>
           
           {/* Badges */}
           <div className="absolute top-2 left-2 flex flex-col gap-1">

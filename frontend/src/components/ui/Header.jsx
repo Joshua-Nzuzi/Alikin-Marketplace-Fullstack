@@ -61,13 +61,13 @@ const Header = ({ user = null, cartCount = 0, onNavigate = () => {} }) => {
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-card border-b border-border shadow-warm-sm">
+    <header className="fixed top-0 z-50 w-full bg-card border-b border-border shadow-warm-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div 
             className="flex items-center cursor-pointer transition-smooth hover:opacity-80"
-            onClick={() => handleNavigation('/product-discovery')}
+            onClick={() => handleNavigation('/landing-page')}
           >
             <Logo />
           </div>

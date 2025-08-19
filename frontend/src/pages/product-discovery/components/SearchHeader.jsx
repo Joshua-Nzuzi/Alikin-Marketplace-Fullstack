@@ -20,7 +20,7 @@ const SearchHeader = ({
   };
 
   return (
-    <div className="sticky top-0 z-40 bg-card border-b border-border shadow-warm-sm">
+    <div className="sticky top-16 lg:top-20 z-40 bg-card border-b border-border shadow-warm-sm">
       <div className="p-4">
         <div className="flex items-center gap-3">
           {/* Search Bar */}
