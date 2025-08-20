@@ -446,51 +446,53 @@ const OrderTracking = () => {
                 </div>
 
                 {/* Tabs Navigation */}
-                <div className="bg-card border border-border rounded-lg">
-                  <div className="border-b border-border">
-                    <nav className="flex space-x-8 px-6">
-                      {tabs?.map((tab) => (
-                        <button
-                          key={tab?.key}
-                          onClick={() => setActiveTab(tab?.key)}
-                          className={`flex items-center space-x-2 py-4 border-b-2 font-medium text-sm transition-smooth ${
-                            activeTab === tab?.key
-                              ? 'border-primary text-primary' :'border-transparent text-muted-foreground hover:text-foreground'
-                          }`}
-                        >
-                          <Icon name={tab?.icon} size={18} />
-                          <span>{tab?.label}</span>
-                        </button>
-                      ))}
-                    </nav>
-                  </div>
+<div className="bg-card border border-border rounded-lg">
+  <div className="border-b border-border">
+    <nav className="flex gap-6 px-4 sm:px-6 overflow-x-auto whitespace-nowrap no-scrollbar">
+      {tabs?.map((tab) => (
+        <button
+          key={tab?.key}
+          onClick={() => setActiveTab(tab?.key)}
+          className={`flex items-center gap-2 py-4 border-b-2 font-medium text-sm flex-shrink-0 transition-smooth ${
+            activeTab === tab?.key
+              ? 'border-primary text-primary'
+              : 'border-transparent text-muted-foreground hover:text-foreground'
+          }`}
+        >
+          <Icon name={tab?.icon} size={18} />
+          <span>{tab?.label}</span>
+        </button>
+      ))}
+    </nav>
+  </div>
 
-                  {/* Tab Content */}
-                  <div className="p-6">
-                    {activeTab === 'timeline' && (
-                      <OrderTimeline order={selectedOrder} />
-                    )}
-                    {activeTab === 'map' && (
-                      <DeliveryMap 
-                        order={selectedOrder}
-                        onRefreshLocation={handleRefreshLocation}
-                      />
-                    )}
-                    {activeTab === 'communication' && (
-                      <CommunicationCenter
-                        order={selectedOrder}
-                        onSendMessage={handleSendMessage}
-                        onCallVendor={handleCallVendor}
-                        onCallDriver={handleCallDriver}
-                      />
-                    )}
-                    {activeTab === 'notifications' && (
-                      <NotificationSettings
-                        onSaveSettings={handleSaveNotificationSettings}
-                      />
-                    )}
-                  </div>
-                </div>
+  {/* Tab Content */}
+  <div className="p-6">
+    {activeTab === 'timeline' && (
+      <OrderTimeline order={selectedOrder} />
+    )}
+    {activeTab === 'map' && (
+      <DeliveryMap 
+        order={selectedOrder}
+        onRefreshLocation={handleRefreshLocation}
+      />
+    )}
+    {activeTab === 'communication' && (
+      <CommunicationCenter
+        order={selectedOrder}
+        onSendMessage={handleSendMessage}
+        onCallVendor={handleCallVendor}
+        onCallDriver={handleCallDriver}
+      />
+    )}
+    {activeTab === 'notifications' && (
+      <NotificationSettings
+        onSaveSettings={handleSaveNotificationSettings}
+      />
+    )}
+  </div>
+</div>
+
               </div>
             ) : (
               <div className="bg-card border border-border rounded-lg p-12 text-center">
