@@ -84,16 +84,17 @@ const ProductCard = ({ product, onQuickAdd = () => {}, onAddToCart = () => {} })
         onClick={handleCardClick}
       >
         {/* Product Image */}
-        <div className="relative overflow-hidden rounded-t-lg aspect-[4/3] sm:aspect-square w-full">
-  <Image
-    src={product?.image}
-    alt={product?.name}
-    className="w-full h-full bg-muted object-contain sm:object-cover sm:group-hover:scale-105 transition-smooth-300"
-    loading="lazy"
-    decoding="async"
-  />
+<div className="relative overflow-hidden rounded-lg w-full bg-background flex items-center justify-center h-[200px] sm:h-[250px] border border-gray-200">
+  <Link to={`/p/${slugify(product.name, product.id)}`} className="block w-full h-full">
+    <Image
+      src={product?.image}
+      alt={product?.name}
+      className="max-h-full max-w-full object-contain mx-auto transition-transform duration-300 ease-in-out group-hover:scale-105"
+      loading="lazy"
+      decoding="async"
+    />
+  </Link>
 
-  
           
           {/* Badges */}
           <div className="absolute top-2 left-2 flex flex-col gap-1">
