@@ -213,21 +213,22 @@ const UserAuthentication = () => {
                 Paiements acceptés
               </p>
               <div className="flex items-center justify-center space-x-4">
-                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
-                  <Icon name="Smartphone" size={16} color="white" />
-                </div>
-                <div className="w-8 h-8 bg-green-600 rounded flex items-center justify-center">
-                  <Icon name="Smartphone" size={16} color="white" />
-                </div>
-                <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
-                  <Icon name="Smartphone" size={16} color="white" />
-                </div>
-              </div>
-              <div className="flex items-center justify-center space-x-3 mt-2">
-                <span className="text-xs text-muted-foreground">Orange Money</span>
-                <span className="text-xs text-muted-foreground">M-Pesa</span>
-                <span className="text-xs text-muted-foreground">Airtel Money</span>
-              </div>
+  <div className="w-24 h-24 rounded-lg flex items-center justify-center overflow-hidden">
+    <img 
+      src="/assets/images/Orange_money.png" 
+      alt="Orange Money"
+      className="w-18 h-18 object-contain"
+    />
+  </div>
+  <div className="w-24 h-24 rounded-lg flex items-center justify-center overflow-hidden">
+    <img 
+      src="/assets/images/Mpesa.png" 
+      alt="M-Pesa"
+      className="w-16 h-16 object-contain"
+    />
+  </div>
+</div>
+              
             </div>
           </div>
         </main>

@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/ui/Header';
 import PaymentMethodsSection from './components/PaymentMethodsSection';
+import TestimonialsSection from './components/TestimonialsSection';
+
 import Footer from './components/Footer';
 
 const LandingPage = () => {
@@ -45,20 +47,20 @@ const LandingPage = () => {
                 </div>
                 
                 {/* Stats */}
-                <div className="flex flex-wrap gap-8 justify-center lg:justify-start mt-12">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">500+</div>
-                    <div className="text-sm text-muted-foreground">Vendeurs</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">10k+</div>
-                    <div className="text-sm text-muted-foreground">Produits</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">25k+</div>
-                    <div className="text-sm text-muted-foreground">Commandes</div>
-                  </div>
-                </div>
+<div className="flex gap-4 sm:gap-8 justify-center lg:justify-start mt-12">
+  <div className="text-center flex-1 sm:flex-none">
+    <div className="text-xl sm:text-2xl font-bold text-primary">500+</div>
+    <div className="text-xs sm:text-sm text-muted-foreground">Vendeurs</div>
+  </div>
+  <div className="text-center flex-1 sm:flex-none">
+    <div className="text-xl sm:text-2xl font-bold text-primary">10k+</div>
+    <div className="text-xs sm:text-sm text-muted-foreground">Produits</div>
+  </div>
+  <div className="text-center flex-1 sm:flex-none">
+    <div className="text-xl sm:text-2xl font-bold text-primary">25k+</div>
+    <div className="text-xs sm:text-sm text-muted-foreground">Commandes</div>
+  </div>
+</div>
               </div>
               
               {/* Hero Image */}
@@ -84,6 +86,7 @@ const LandingPage = () => {
         
         {/* Payment Methods Section */}
         <PaymentMethodsSection />
+        <TestimonialsSection />
       </main>
       
       {/* Footer */}

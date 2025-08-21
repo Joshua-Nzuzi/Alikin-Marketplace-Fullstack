@@ -158,14 +158,16 @@ const ProductGrid = ({
         {/* Load More Button */}
         {hasMore && products?.length > 0 && !isLoading && (
           <div className="flex justify-center mt-8">
-            <Button
-              variant="outline"
-              onClick={onLoadMore}
-              className="min-w-[200px]"
-            >
-              <Icon name="Plus" size={16} className="mr-2" />
-              Charger plus de produits
-            </Button>
+            <div className="flex justify-center">
+  <Button
+    variant="outline"
+    onClick={onLoadMore}
+    className="min-w-[200px]"
+  >
+    <Icon name="Plus" size={16} className="mr-2" />
+    Charger plus de produits
+  </Button>
+</div>
           </div>
         )}
 

@@ -468,7 +468,8 @@ const handleSortChange = useCallback((newSort) => {
         />
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col">
+        <div className="w-full min-w-0 flex-1 flex flex-col">
+
           {/* Search Header */}
           <SearchHeader
             onSearch={handleSearch}

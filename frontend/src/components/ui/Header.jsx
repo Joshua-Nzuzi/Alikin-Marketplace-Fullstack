@@ -208,7 +208,18 @@ const Header = ({ user = null, cartCount = 0, onNavigate = () => {} }) => {
                   )}
                 </button>
               ))}
-              
+
+              {/* Add Seller Dashboard for logged in users */}
+              {user && (
+                <button
+                  onClick={handleVendorDashboard}
+                  className="w-full flex items-center space-x-3 px-4 py-3 text-left rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-smooth animate-scale-press"
+                >
+                  <Icon name="Store" size={20} />
+                  <span className="font-medium">Tableau de Bord Vendeur</span>
+                </button>
+              )}
+
               {/* Mobile Search */}
               <button
                 onClick={() => {/* Search functionality */}}

@@ -324,17 +324,17 @@ const ShoppingCartCheckout = () => {
                     />
                   ))}
 
-                  <div className="flex justify-end">
-                    <Button
-                      variant="default"
-                      size="lg"
-                      onClick={() => handleStepChange('delivery')}
-                      iconName="ArrowRight"
-                      iconPosition="right"
-                    >
-                      Continuer vers la livraison
-                    </Button>
-                  </div>
+                  <div className="flex justify-center sm:justify-end">
+  <Button
+    variant="default"
+    size="lg"
+    onClick={() => handleStepChange('delivery')}
+    iconName="ArrowRight"
+    iconPosition="right"
+  >
+    Continuer vers la livraison
+  </Button>
+</div>
                 </div>
               )}
 

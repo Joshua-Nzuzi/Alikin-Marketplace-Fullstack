@@ -12,24 +12,16 @@ const MobileMoneySection = ({ userType = 'buyer' }) => {
     {
       id: 'orange',
       name: 'Orange Money',
-      logo: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=100&h=100&fit=crop&crop=center',
-      color: 'bg-orange-500',
+      logo: '/assets/images/Orange_money.png',
+      
       prefix: '+243'
     },
     {
       id: 'mpesa',
       name: 'M-Pesa',
-      logo: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=100&h=100&fit=crop&crop=center',
-      color: 'bg-green-600',
+      logo: '/assets/images/Mpesa.png',
       prefix: '+243'
     },
-    {
-      id: 'airtel',
-      name: 'Airtel Money',
-      logo: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=100&h=100&fit=crop&crop=center',
-      color: 'bg-red-600',
-      prefix: '+243'
-    }
   ];
 
   const handleProviderSelect = (provider) => {

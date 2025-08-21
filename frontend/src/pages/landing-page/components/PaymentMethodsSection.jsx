@@ -3,19 +3,15 @@ import React from 'react';
 const PaymentMethodsSection = () => {
   const paymentMethods = [
     {
-      
       imageSrc: '/assets/images/Visa.png'
     },
     {
-      
       imageSrc: '/assets/images/Orange_money.png'
     },
     {
-      
       imageSrc: '/assets/images/Mpesa.png'
     },
     {
-      
       imageSrc: '/assets/images/Cash.png'
     }
   ];
@@ -27,20 +23,20 @@ const PaymentMethodsSection = () => {
           Paiement rapide & sécurisé
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 items-center justify-items-center">
+        <div className="flex gap-4 sm:gap-6 md:gap-8 items-center justify-center">
           {paymentMethods.map((method, index) => (
             <div
               key={index}
-              className="flex flex-col items-center space-y-2 p-3 md:p-4 rounded-xl hover:bg-muted/50 transition-smooth"
+              className="flex flex-col items-center space-y-2 p-2 sm:p-3 md:p-4 rounded-xl hover:bg-muted/50 transition-smooth flex-1 max-w-[80px] sm:max-w-none"
             >
               <img
                 src={method.imageSrc}
                 alt={method.name}
-                className="w-16 h-16 md:w-20 md:h-20 object-contain"
+                className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain"
                 loading="lazy"
                 decoding="async"
               />
-              <span className="text-sm text-muted-foreground font-medium">
+              <span className="text-xs sm:text-sm text-muted-foreground font-medium">
                 {method.name}
               </span>
             </div>

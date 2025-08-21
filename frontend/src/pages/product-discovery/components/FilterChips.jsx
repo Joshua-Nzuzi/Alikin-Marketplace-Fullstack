@@ -89,39 +89,45 @@ const FilterChips = ({ activeFilters = {}, onRemoveFilter = () => {}, onClearAll
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-2 p-4 bg-muted/30 border-b border-border">
-      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-        <Icon name="Filter" size={16} />
-        <span>Filtres actifs:</span>
-      </div>
-      <div className="flex flex-wrap items-center gap-2">
-        {filterChips?.map((chip) => (
-          <div
-            key={chip?.key}
-            className="flex items-center gap-1 bg-primary/10 text-primary border border-primary/20 rounded-full px-3 py-1 text-sm"
-          >
-            <span className="truncate max-w-32">{chip?.label}</span>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => onRemoveFilter(chip?.key)}
-              className="w-4 h-4 p-0 hover:bg-primary/20 rounded-full"
-            >
-              <Icon name="X" size={12} />
-            </Button>
+    <div className="bg-muted/30 border-b border-border">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground flex-shrink-0">
+            <Icon name="Filter" size={16} />
+            <span className="hidden sm:inline">Filtres actifs:</span>
+            <span className="sm:hidden">Filtres:</span>
           </div>
-        ))}
-        
-        {filterChips?.length > 1 && (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onClearAll}
-            className="text-muted-foreground hover:text-foreground text-xs"
-          >
-            Tout effacer
-          </Button>
-        )}
+          
+          <div className="flex flex-wrap items-center gap-2">
+            {filterChips?.map((chip) => (
+              <div
+                key={chip?.key}
+                className="flex items-center gap-1.5 bg-primary/10 text-primary border border-primary/20 rounded-full px-3 py-1.5 text-sm shadow-sm"
+              >
+                <span className="truncate max-w-28 sm:max-w-32">{chip?.label}</span>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => onRemoveFilter(chip?.key)}
+                  className="w-4 h-4 p-0 hover:bg-primary/20 rounded-full flex-shrink-0"
+                >
+                  <Icon name="X" size={12} />
+                </Button>
+              </div>
+            ))}
+            
+            {filterChips?.length > 1 && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onClearAll}
+                className="text-muted-foreground hover:text-foreground text-xs px-2 py-1 rounded-full"
+              >
+                Effacer
+              </Button>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

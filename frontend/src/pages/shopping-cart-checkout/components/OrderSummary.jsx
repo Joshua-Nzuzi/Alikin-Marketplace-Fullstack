@@ -24,69 +24,71 @@ const OrderSummary = ({
 
   return (
     <div className="bg-card border border-border rounded-lg p-6">
-      <h3 className="text-lg font-semibold text-foreground mb-4">
-        Résumé de la commande
-      </h3>
-      {/* Items Summary */}
-      <div className="space-y-3 mb-6">
-        <div className="flex justify-between text-sm">
-          <span className="text-muted-foreground">
-            Sous-total ({totalItems} article{totalItems > 1 ? 's' : ''})
-          </span>
-          <span className="font-medium text-foreground">
-            {formatPrice(subtotal)}
-          </span>
-        </div>
+  <h3 className="text-lg font-semibold text-foreground mb-4">
+    Résumé de la commande
+  </h3>
+  {/* Items Summary */}
+  <div className="space-y-3 mb-6">
+    <div className="flex justify-between text-sm">
+      <span className="text-muted-foreground">
+        Sous-total ({totalItems} article{totalItems > 1 ? 's' : ''})
+      </span>
+      <span className="font-medium text-foreground">
+        {formatPrice(subtotal)}
+      </span>
+    </div>
 
-        <div className="flex justify-between text-sm">
-          <span className="text-muted-foreground">Frais de livraison</span>
-          <span className="font-medium text-foreground">
-            {deliveryFee === 0 ? (
-              <span className="text-success">Gratuit</span>
-            ) : (
-              formatPrice(deliveryFee)
-            )}
-          </span>
-        </div>
-
-        {discount && (
-          <div className="flex justify-between text-sm">
-            <div className="flex items-center gap-2">
-              <span className="text-success">Réduction ({discount?.code})</span>
-              <button
-                onClick={() => onPromoCodeRemove()}
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <Icon name="X" size={14} />
-              </button>
-            </div>
-            <span className="font-medium text-success">
-              -{formatPrice(discountAmount)}
-            </span>
-          </div>
+    <div className="flex justify-between text-sm">
+      <span className="text-muted-foreground">Frais de livraison</span>
+      <span className="font-medium text-foreground">
+        {deliveryFee === 0 ? (
+          <span className="text-success">Gratuit</span>
+        ) : (
+          formatPrice(deliveryFee)
         )}
-      </div>
-      {/* Promo Code Section */}
-      {!discount && (
-        <div className="mb-6">
-          <div className="flex gap-2">
-            <input
-              type="text"
-              placeholder="Code promo"
-              value={promoCode}
-              onChange={(e) => onPromoCodeApply(e?.target?.value)}
-              className="flex-1 px-3 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            />
-            <button
-              onClick={() => onPromoCodeApply(promoCode)}
-              disabled={!promoCode?.trim()}
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-smooth"
-            >
-              Appliquer
-            </button>
-          </div>
+      </span>
+    </div>
+
+    {discount && (
+      <div className="flex justify-between text-sm">
+        <div className="flex items-center gap-2">
+          <span className="text-success">Réduction ({discount?.code})</span>
+          <button
+            onClick={() => onPromoCodeRemove()}
+            className="text-muted-foreground hover:text-foreground"
+          >
+            <Icon name="X" size={14} />
+          </button>
         </div>
-      )}
+        <span className="font-medium text-success">
+          -{formatPrice(discountAmount)}
+        </span>
+      </div>
+    )}
+  </div>
+  
+  {/* Promo Code Section - Version responsive */}
+  {!discount && (
+    <div className="mb-6">
+      <div className="flex flex-col sm:flex-row gap-2">
+        <input
+          type="text"
+          placeholder="Code promo"
+          value={promoCode}
+          onChange={(e) => onPromoCodeApply(e?.target?.value)}
+          className="flex-1 px-3 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+        />
+        <button
+          onClick={() => onPromoCodeApply(promoCode)}
+          disabled={!promoCode?.trim()}
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-smooth whitespace-nowrap flex-shrink-0"
+        >
+          Appliquer
+        </button>
+      </div>
+    </div>
+  )}
+
       {/* Total */}
       <div className="border-t border-border pt-4">
         <div className="flex justify-between items-center">
@@ -108,29 +110,36 @@ const OrderSummary = ({
         </div>
       )}
       {/* Payment Security */}
-      <div className="mt-6 pt-4 border-t border-border">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-          <Icon name="Shield" size={16} />
-          <span>Paiement sécurisé</span>
-        </div>
-        
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1">
-            <div className="w-8 h-6 bg-orange-500 rounded flex items-center justify-center">
-              <span className="text-white text-xs font-bold">OM</span>
-            </div>
-            <span className="text-xs text-muted-foreground">Orange Money</span>
-          </div>
-          
-          <div className="flex items-center gap-1">
-            <div className="w-8 h-6 bg-green-600 rounded flex items-center justify-center">
-              <span className="text-white text-xs font-bold">M</span>
-            </div>
-            <span className="text-xs text-muted-foreground">M-Pesa</span>
-          </div>
-        </div>
-      </div>
+<div className="mt-6 pt-4 border-t border-border text-center sm:text-left">
+  <div className="flex items-center justify-center sm:justify-start gap-2 text-sm text-muted-foreground mb-3">
+    <Icon name="Shield" size={16} />
+    <span>Paiement sécurisé</span>
+  </div>
+  
+  <div className="flex items-center justify-center gap-4">
+  <div className="flex items-center justify-center">
+    <div className="w-16 h-12 rounded overflow-hidden flex items-center justify-center bg-white border border-border">
+      <img 
+        src="/assets/images/Orange_money.png" 
+        alt="Orange Money" 
+        className="w-full h-full object-contain p-1"
+      />
     </div>
+  </div>
+  
+  <div className="flex items-center justify-center">
+    <div className="w-16 h-12 rounded overflow-hidden flex items-center justify-center bg-white border border-border">
+      <img 
+        src="/assets/images/Mpesa.png" 
+        alt="M-Pesa" 
+        className="w-full h-full object-contain p-1"
+      />
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+    
   );
 };
 
